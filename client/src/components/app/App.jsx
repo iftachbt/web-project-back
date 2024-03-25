@@ -42,12 +42,6 @@ const [state , setState]=useState(true)
         setUser={setUser} 
          setState ={setState} 
        /> */}
-      {/* {!user && <LoginSignUp 
-        setUser ={setUser} 
-        user ={user} 
-        state ={state} 
-        setState ={setState} 
-        />} */}
         <Routes>
             <Route exact path="/" element={
               <LoginSignUp 
