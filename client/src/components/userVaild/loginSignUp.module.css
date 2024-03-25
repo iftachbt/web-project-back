@@ -1,0 +1,25 @@
+.main_container{
+  border: solid black;
+    border-radius: 12px;
+    width: 40vw;
+    padding: 16px;
+    margin: 0px auto 0 auto;
+    min-width: 316px;
+    background-color: #f6f5f3;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    bottom: 0;
+    top: 17vh;
+    right: 0;
+    max-height: fit-content;
+}
+.container{
+  width: 60%;
+  height: 50%;
+  margin: 0px auto;
+}
+p a{
+  color: rgb(17, 146, 238);
+  cursor: pointer;
+}
