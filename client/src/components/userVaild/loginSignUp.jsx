@@ -9,8 +9,7 @@ const {user ,setUser,state , setState}=props
   const navigate = useNavigate();
 
 React.useEffect(()=>{
-  navigate("/game")
-  console.log("game");
+  if(user)navigate("/game")
 },[user])
 
 function refreshPage() {

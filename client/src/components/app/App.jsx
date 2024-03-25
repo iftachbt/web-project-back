@@ -22,11 +22,14 @@ const [state , setState]=useState(true)
     fetchUserHandler()  
     // eslint-disable-next-line 
   },[])
+  useEffect(() => {
+    console.log("appuser",user); 
+  },[user])
   
   const fetchUserHandler = async () => {
     if(!user){
       const user_ = await fetchUser()
-      if(!user_ || user_ === ""||user_ === "err") console.log("");
+      if(!user_ || user_ === ""||user_ === "err") console.log("no user");
       else{
         setUser(user_)
       }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { logIn } from "../../../actions/apiCalls/user";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Formik,Form } from 'formik';
 import { Grid,IconButton,InputAdornment } from '@mui/material';
 import TextField  from '../TextField.form';
@@ -15,12 +15,13 @@ function LogIn(props){
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   async function handleClick(values){
     const res = await logIn(values)
     if(res.errMsg)return alert(res.errMsg)
     if(res !== "err") {
+      console.log("res",res);
       props.setUser(res);
       props.refreshPage()
       alert("successfully logIn")
