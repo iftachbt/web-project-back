@@ -17,6 +17,10 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import { Button, ThemeProvider } from '@mui/material';
+import { logout } from '../../../actions/apiCalls/user';
+import {useNavigate,useParams} from "react-router-dom";
+import {themeBox} from '../../../actions/muiStayles/muiStyle'
 
 const drawerWidth = 240;
 
@@ -65,19 +69,23 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-start',
 }));
 
-function ResponsiveDrawer() {
+function ResponsiveDrawer(props) {
+  let {setUser,user} = props
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [dataList, setDataList] = React.useState([]);
   const [pressOnce, setPressOnce] = React.useState(true);
+  const navigator = useNavigate()
 
-
+  const handleLogOut =() =>{
+    logout()
+    setUser(null)
+    navigator("/")
+  }
   const handleDrawerOpen = () => {
+    console.log("user",user);
     setOpen(true);
   };
-  React.useEffect(() =>{
-    console.log("dataList",dataList);
-  },[dataList])
 
   const handleClick =async (option) => {
     let data = await getFromDndApi(option)
@@ -99,10 +107,14 @@ function ResponsiveDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
+      <ThemeProvider theme={themeBox} >
+      <AppBar color="primary" position="fixed" open={open}>
+        <Toolbar >
           <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-            Persistent drawer
+          <Button onClick={()=>handleLogOut()} variant="contained" color="error">LogOut</Button>
+          </Typography>
+          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
+          <p>{user?.fName}</p>
           </Typography>
           <IconButton
             color="inherit"
@@ -115,6 +127,7 @@ function ResponsiveDrawer() {
           </IconButton>
         </Toolbar>
       </AppBar>
+      </ThemeProvider>
       <Main open={open}>
         <DrawerHeader />
         <ListOfData 

@@ -5,7 +5,7 @@ import { AuthValidation } from "../utils/validation.js";
 export const UsersRoute = express.Router();
 export const UserPrefix = "/user";
 
-UsersRoute.get("/user", AuthValidation, (req, res) => {
+UsersRoute.get("/user", (req, res) => {
   res.send(req.user);
 });
 

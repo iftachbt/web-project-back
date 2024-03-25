@@ -4,22 +4,23 @@ import ResponsiveDrawer from "./displayBar/drower";
 import {useNavigate,useParams} from "react-router-dom";
 
 function MainGame(props){
-  const URL = process.env.REACT_APP_SERVER;
-  const {user} = props
-  const {sessionCode} = useParams()
-  const navigate = useNavigate();
+  let {setUser,user} = props
+  const navigator = useNavigate()
 
-  useEffect(() => {
- 
+  React.useEffect(()=>{
+    console.log("user ",user );
+    if(!user)navigator("/")
   },[])
-
+  
   function refreshPage() {
     window.location.reload(false);
   }
 
   return(
     <div className={style.mainCon}>
-      <ResponsiveDrawer />
+      <ResponsiveDrawer 
+      setUser ={setUser} 
+      user ={user} />
     </div>
   )
 }
