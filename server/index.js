@@ -20,7 +20,7 @@ const server = http.createServer(app);
 
 passportInitialize(passport);
 app.use(express.static("public"));
-app.use(cookieParser(process.env.AUTH_SESSION_SECRET));
+app.use(cookieParser("give me give me some time to think"));
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,16 +32,16 @@ const port = process.env.PORT || 5000;
 
 connectRoutes(app);
 
-if (process.env.ENV === "PROD") {
-  console.log("PROD");
-  app.use(express.static(path.join(__dirname, "..", "client", "build")));
-  app.get("/*", function (req, res) {
-    res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"), function (err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-    });
+// if (process.env.ENV === "PROD") {
+console.log("PROD");
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
   });
-}
+});
+// }
 
 server.listen(port, () => console.log(`Listening on port ${port}`));

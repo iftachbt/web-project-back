@@ -18,8 +18,8 @@ const bcryptHandler = (password) => {
 
 export function sessionConfig() {
   return {
-    key: process.env.AUTH_SESSION_KEY,
-    secret: process.env.AUTH_SESSION_SECRET,
+    key: "why dont you talk to each other",
+    secret: "give me give me some time to think",
     resave: false,
     saveUninitialized: false,
     store: sessionStore,

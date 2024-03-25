@@ -5,10 +5,10 @@ import mysqlSession from "express-mysql-session";
 import { InternalServerError } from "../error_handling/error.class.js";
 
 const dbConfig = {
-  host: process.env.DB_HOST,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: "54.162.25.97",
+  user: "admin",
+  password: "mysqlhp,j13531",
+  database: "web_project_db",
 };
 console.log("dbConfig", dbConfig);
 
