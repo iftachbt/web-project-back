@@ -18,7 +18,6 @@ const getCon = () => {
 };
 
 export const runQuery = (query, values, op) => {
-  console.log("query", query);
   if (op?.log) console.log(query, values);
   return new Promise((resolve) => {
     const connection = getCon();
@@ -27,7 +26,6 @@ export const runQuery = (query, values, op) => {
       connection.query(query, values, function (err, result) {
         connection.end();
         let res = result;
-        console.log("????????????????res???????????", res);
         if (err) {
           if (op?.codeInstedOfError) res = err.code;
           else throw new InternalServerError(err.code);
